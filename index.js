@@ -11,8 +11,6 @@ const app = express();
 
 expressConfig(app);
 
-//   console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>', config);
-
 app.listen(port);
 logger.info(`Application started on port ${port}`);
 
