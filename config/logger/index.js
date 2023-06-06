@@ -1,6 +1,12 @@
 /* eslint-disable new-cap */
 import winston from 'winston';
 
+const format = winston.format.combine(
+  winston.format.label({ label: 'SPENDIT-BACKEND' }),
+  winston.format.timestamp(),
+  winston.format.printf((info) => `${info.timestamp} [${info.label}] ${info.level}: ${info.message}`)
+);
+
 const transports = (level, maxFiles) => [
   new winston.transports.Console({
     level,
@@ -21,7 +27,8 @@ const transports = (level, maxFiles) => [
 
 const live = (level, maxFiles) => winston.createLogger({
   transports: transports(level, maxFiles),
-  exitOnError: false
+  exitOnError: false,
+  format
 });
 
 const defaultLogger = {
@@ -33,7 +40,8 @@ const defaultLogger = {
       colorize: true
     })
   ],
-  exitOnError: false
+  exitOnError: false,
+  format
 };
 
 const getLogger = (env) => {

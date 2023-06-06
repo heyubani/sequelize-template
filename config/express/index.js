@@ -7,11 +7,12 @@ import loggerInit from '../logger/index';
 import enums from '../../lib/enums/index';
 import routes from '../routers';
 import {db} from '../db';
+import config from '..';
 
 const expressConfig = app => {
   let logger;
 
-  switch (process.env.SEEDFI_NODE_ENV === '') {
+  switch (config.SPENDIT_NODE_ENV) {
   case 'development':
     logger = loggerInit('development');
     break;

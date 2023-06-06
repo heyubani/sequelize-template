@@ -7,9 +7,9 @@ import { Sequelize } from 'sequelize';
 // const pg = pgp({ promiseLib: promise, noWarnings: true });
 // const db = pg(config.SPENDIT_DATABASE_URL);
 
-const db = new Sequelize(process.env.SPENDIT_DEV_DATABASE_URL, {
+const db = new Sequelize(config.SPENDIT_DATABASE_URL, {
   host: 'localhost',
   dialect: 'postgres'
 });
-console.log(config);
+
 export { db };

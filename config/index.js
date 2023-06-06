@@ -8,6 +8,6 @@ const envConfig = {
   test: testEnv
 };
 
-const config = envConfig[SPENDIT_NODE_ENV] || { development: devEnv };
+const config = envConfig[SPENDIT_NODE_ENV] || devEnv;
 
 export default config;

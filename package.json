@@ -13,7 +13,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node babel-node index.js",
     "prestart": "npm run migrate:up && npm run seed:up",
-    "lint": "eslint --fix app/ --ext .js",
     "pretest": "npm run migrate-test:down && npm run migrate-test:up",
     "posttest": "npm run migrate-test:down",
     "precommit": "npm run lint",
@@ -25,7 +24,8 @@
     "create:migration": "node node_modules/db-migrate/bin/db-migrate --config database.json create",
     "migrate-test:up": "db-migrate up --config database.json -e test",
     "migrate-test:down": "db-migrate down -c 100 --config database.json -e test",
-    "migrate:reset": "db-migrate reset --config database.json"
+    "migrate:reset": "db-migrate reset --config database.json",
+    "sequelize": "sequelize $npm_config_cmdx"
   },
   "repository": {
     "type": "git",
@@ -69,6 +69,7 @@
     "eslint-plugin-import": "^2.26.0",
     "mime": "^3.0.0",
     "nodemon": "^2.0.20",
+    "sequelize-cli": "^6.6.1",
     "sinon": "^15.0.0",
     "supertest": "^6.3.2"
   }
