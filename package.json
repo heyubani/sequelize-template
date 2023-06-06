@@ -1,0 +1,75 @@
+{
+  "name": "spendit-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "engines": {
+    "node": "10.23.0",
+    "npm": "6.14.8"
+  },
+  "scripts": {
+    "lint": "eslint --fix app/ --ext .js",
+    "start:dev": "nodemon --exec babel-node index",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node babel-node index.js",
+    "prestart": "npm run migrate:up && npm run seed:up",
+    "lint": "eslint --fix app/ --ext .js",
+    "pretest": "npm run migrate-test:down && npm run migrate-test:up",
+    "posttest": "npm run migrate-test:down",
+    "precommit": "npm run lint",
+    "migrate:up": "npx sequelize-cli db:migrate",
+    "migrate:down": "db-migrate down -c 100",
+    "create:seed": "db-migrate create:seed -c 100 --config database.json",
+    "seed:down": "db-migrate reset:seed -c 100 --config database.json",
+    "seed:up": "db-migrate up:seed --config database.json",
+    "create:migration": "node node_modules/db-migrate/bin/db-migrate --config database.json create",
+    "migrate-test:up": "db-migrate up --config database.json -e test",
+    "migrate-test:down": "db-migrate down -c 100 --config database.json -e test",
+    "migrate:reset": "db-migrate reset --config database.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/spenditlap/spendit-backend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/spenditlap/spendit-backend/issues"
+  },
+  "homepage": "https://github.com/spenditlap/spendit-backend#readme",
+  "dependencies": {
+    "bluebird": "^3.7.2",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "dayjs": "^1.11.7",
+    "db-migrate": "^0.11.13",
+    "db-migrate-pg": "^1.3.0",
+    "dotenv": "^16.0.3",
+    "esm": "^3.2.25",
+    "express": "^4.18.2",
+    "helmet": "^7.0.0",
+    "pg": "^8.11.0",
+    "pg-hstore": "^2.3.4",
+    "pg-promise": "^11.5.0",
+    "sequelize": "^6.32.0",
+    "uuid": "^9.0.0",
+    "winston": "^3.9.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.19.3",
+    "@babel/core": "^7.20.5",
+    "@babel/node": "^7.20.5",
+    "@babel/preset-env": "^7.20.2",
+    "@babel/register": "^7.18.9",
+    "assert": "^2.0.0",
+    "chai-http": "^4.3.0",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.29.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "mime": "^3.0.0",
+    "nodemon": "^2.0.20",
+    "sinon": "^15.0.0",
+    "supertest": "^6.3.2"
+  }
+}
