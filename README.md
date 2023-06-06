@@ -1,1 +1,1 @@
-# spendit-backend
+# node-sequelize-template

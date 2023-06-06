@@ -1,5 +1,5 @@
 {
-  "name": "spendit-backend",
+  "name": "node-sequelize-template",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
